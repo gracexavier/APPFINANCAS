@@ -17,7 +17,7 @@ import { Usuario } from './Modules/usuario/entities';
     synchronize: true,
   }),
     
-    UsuarioModule],
+  UsuarioModule],
   controllers: [],
   providers: [],
 })
