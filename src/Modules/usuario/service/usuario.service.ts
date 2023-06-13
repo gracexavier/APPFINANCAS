@@ -1,26 +1,30 @@
 import { Injectable, Param } from '@nestjs/common';
+import { Usuario } from '../entities';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { identity } from 'rxjs';
 
 @Injectable()
 export class UsuarioService {
-  private usuario:IUsuario[] = [
-    {
-        "nome": "joao",
-        "email": "naotem@naotem.com",
-        "password": "123456"
-    },
-    {
-        "nome": "maria",
-        "email": "naotem@naotem.com",
-        "password": "1234567"
-    }
-]
+  private usuario:IUsuario[] = []
 
-  findAll(): IUsuario[] {
-    return this.usuario;
+  constructor(
+    @InjectRepository(Usuario)
+    private usuariosRepository: Repository<Usuario>,
+  ) {}
+
+
+  async findAll(): Promise<Usuario[]> {
+    return await this.usuariosRepository.find()
   }
 
-  findOne(nome: string): IUsuario {
-    return this.usuario.find((usuario)=> usuario.nome == nome);
+  findOne(id: number): Promise<Usuario> {
+    return this.usuariosRepository.findOne({
+      where : {
+        id
+      }
+    })
+
   }
 
   createUsuario(usuario:IUsuario): IUsuario[]{

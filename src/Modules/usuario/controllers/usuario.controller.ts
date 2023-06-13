@@ -1,17 +1,20 @@
 import { Body, Controller, Get, Param, Post, Put, Delete } from '@nestjs/common';
-import { UsuarioService} from '../service/usuario.service';
+import { UsuarioService} from '../service/';
 
 @Controller()
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Get()
-  findAll(): IUsuario[] {
+  findAll():Promise<IUsuario[]> {
     return this.usuarioService.findAll();
   }
-  @Get(':nome')
-  findOne(@Param('nome') nome: string): IUsuario {
-    return this.usuarioService.findOne(nome);
+
+  @Get(':id')
+  
+  findOne(@Param('id') id: number): Promise<Usuario> {
+    return this.usuarioService.findOne(id);
+
   }
 
   @Post()
