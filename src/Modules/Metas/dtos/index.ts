@@ -1,7 +1,7 @@
 interface IMetas{
     nome: string,
     valor: number,
-    tempo: number
+    tempo: number,
     descricao: string,
   }
   

@@ -11,4 +11,4 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   providers: [MetasService],
   exports: [TypeOrmModule]
 })
-export class entradaSaidaModule {}
+export class metasModule {}

@@ -2,6 +2,10 @@ import { Module } from '@nestjs/common';
 import { UsuarioModule } from './Modules/usuario/usuario.module';
 import {TypeOrmModule} from '@nestjs/typeorm'
 import { Usuario } from './Modules/usuario/entities';
+import { Metas } from './Modules/Metas/entities';
+import { entradaSaida } from './Modules/entradaSaida/entities';
+import { entradaSaidaModule } from './Modules/entradaSaida/entradaSaida.module';
+import { metasModule } from './Modules/Metas/metas.module';
 
 
 @Module({
@@ -13,11 +17,13 @@ import { Usuario } from './Modules/usuario/entities';
     username: 'root',
     password: '123456',
     database: 'appfinancas',
-    entities: [Usuario],
+    entities: [Usuario,Metas,entradaSaida],
     synchronize: true,
   }),
     
-  UsuarioModule],
+  UsuarioModule,
+  entradaSaidaModule,
+  metasModule],
   controllers: [],
   providers: [],
 })

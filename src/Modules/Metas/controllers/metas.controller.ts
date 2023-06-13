@@ -18,13 +18,13 @@ export class MetasController {
   }
 
   @Post()
-  createUsuario(@Body() meta: IMetas){
-    return this.metasService.createUsuario(meta)
+  createMeta(@Body() meta: IMetas){
+    return this.metasService.createMeta(meta)
   }
 
   @Put(':id')
-  updateUsuario(@Body() meta: IMetas, @Param('id') id:number){
-    return this.metasService.updateUsuario(id, meta)
+  updateMeta(@Body() meta: IMetas, @Param('id') id:number){
+    return this.metasService.updateMeta(id, meta)
   }
 
   @Delete(':id')

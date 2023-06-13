@@ -26,11 +26,11 @@ export class MetasService {
     })
   }
 
-  async createUsuario(metas:IMetas): Promise<IMetas>{
+  async createMeta(metas:IMetas): Promise<IMetas>{
     return await this.metasRepository.save(metas)
   }
 
-  async updateUsuario(id: number, metas:IMetas){
+  async updateMeta(id: number, metas:IMetas){
    
     return await this.metasRepository.update({id:id}, metas)
   }
