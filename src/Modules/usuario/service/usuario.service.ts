@@ -2,7 +2,6 @@ import { Injectable, Param } from '@nestjs/common';
 import { Usuario } from '../entities';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { identity } from 'rxjs';
 
 @Injectable()
 export class UsuarioService {
