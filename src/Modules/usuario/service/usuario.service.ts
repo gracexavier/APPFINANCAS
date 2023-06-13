@@ -14,35 +14,29 @@ export class UsuarioService {
   ) {}
 
 
-  async findAll(): Promise<Usuario[]> {
+  async findAll(){
     return await this.usuariosRepository.find()
   }
 
-  findOne(id: number): Promise<Usuario> {
-    return this.usuariosRepository.findOne({
+  async findOne(id: number){
+    return await this.usuariosRepository.findOne({
       where : {
-        id
+        id: id
       }
     })
 
   }
 
-  createUsuario(usuario:IUsuario): IUsuario[]{
-    this.usuario.push(usuario)
-    return this.usuario
+  async createUsuario(usuario:IUsuario){
+    return await this.usuariosRepository.save(usuario)
   }
 
-  updateUsuario(nome: string, usuario:IUsuario): IUsuario[]{
-    /*this.usuario.push(usuario)*/
-    const position = this.usuario.findIndex((usuario)=> usuario.nome == nome)
-    this.usuario[position] = usuario
-    return this.usuario
+  async updateUsuario(id: number, usuario:IUsuario){
+   
+    return await this.usuariosRepository.update({id:id}, usuario)
   }
 
-  delete(nome: string): IUsuario[]{
-    /*this.usuario.push(usuario)*/
-    const position = this.usuario.findIndex((usuario)=> usuario.nome == nome)
-    this.usuario.splice(position, 1)
-    return this.usuario
+  async delete(id: number){
+   return await this.usuariosRepository.delete({id:id})
   }
 }
