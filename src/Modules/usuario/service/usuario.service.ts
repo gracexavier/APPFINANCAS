@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Param } from '@nestjs/common';
 
 @Injectable()
 export class UsuarioService {
@@ -19,6 +19,10 @@ export class UsuarioService {
     return this.usuario;
   }
 
+  findOne(nome: string): IUsuario {
+    return this.usuario.find((usuario)=> usuario.nome == nome);
+  }
+
   createUsuario(usuario:IUsuario): IUsuario[]{
     this.usuario.push(usuario)
     return this.usuario
@@ -28,6 +32,13 @@ export class UsuarioService {
     /*this.usuario.push(usuario)*/
     const position = this.usuario.findIndex((usuario)=> usuario.nome == nome)
     this.usuario[position] = usuario
+    return this.usuario
+  }
+
+  delete(nome: string): IUsuario[]{
+    /*this.usuario.push(usuario)*/
+    const position = this.usuario.findIndex((usuario)=> usuario.nome == nome)
+    this.usuario.splice(position, 1)
     return this.usuario
   }
 }
